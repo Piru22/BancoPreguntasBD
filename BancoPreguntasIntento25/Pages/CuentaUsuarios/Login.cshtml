@@ -1,18 +1,29 @@
 ﻿@page
 @model BancoPreguntasIntento25.Pages.CuentaUsuarios.LoginModel
+@{
+    Layout = "_Landing";
+    ViewData["Title"] = "Iniciar Sesión";
+}
 
-<h2>Iniciar Sesión</h2>
+<div class="login-container">
 
-<form method="post">
-    <div>
-        <label>Correo:</label>
-        <input asp-for="Email" />
-    </div>
-    <div>
-        <label>Contraseña:</label>
-        <input asp-for="Clave" type="password" />
-    </div>
-    <button type="submit">Ingresar</button>
-</form>
+    <h1 class="login-title">INICIAR SESIÓN</h1>
 
-<p style="color:red">@Model.Mensaje</p>
+    <form method="post" class="login-form">
+
+        <div class="input-group">
+            <span class="input-icon">👤</span>
+            <input asp-for="Email" type="email" placeholder="Ingresar email..." />
+        </div>
+
+        <div class="input-group">
+            <span class="input-icon">🔑</span>
+            <input asp-for="Clave" type="password" placeholder="Ingresar contraseña..." />
+        </div>
+
+        <button type="submit" class="btn-custom">INGRESAR</button>
+
+        <p style="color:red">@Model.Mensaje</p>
+    </form>
+
+</div>
