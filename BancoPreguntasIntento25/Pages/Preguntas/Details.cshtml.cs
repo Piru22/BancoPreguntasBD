@@ -28,7 +28,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return NotFound();
             }
 
-            var listapreguntas = await _context.ListaPreguntas.FirstOrDefaultAsync(m => m.PreguntaId == id);
+            var listapreguntas = await _context.ListasPreguntas.FirstOrDefaultAsync(m => m.PreguntaId == id);
             if (listapreguntas == null)
             {
                 return NotFound();

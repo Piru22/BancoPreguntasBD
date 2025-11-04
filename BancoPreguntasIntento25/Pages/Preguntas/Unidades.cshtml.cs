@@ -14,7 +14,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public void OnGet()
         {
-            Unidades = _context.ListaPreguntas
+            Unidades = _context.ListasPreguntas
                 .Where(p => p.Asignatura == Asignatura)
                 .Select(p => p.Unidad)
                 .Distinct()

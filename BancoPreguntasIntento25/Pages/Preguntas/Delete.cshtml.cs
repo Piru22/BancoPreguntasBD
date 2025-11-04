@@ -29,7 +29,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return NotFound();
             }
 
-            var listapreguntas = await _context.ListaPreguntas.FirstOrDefaultAsync(m => m.PreguntaId == id);
+            var listapreguntas = await _context.ListasPreguntas.FirstOrDefaultAsync(m => m.PreguntaId == id);
 
             if (listapreguntas == null)
             {
@@ -49,11 +49,11 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return NotFound();
             }
 
-            var listapreguntas = await _context.ListaPreguntas.FindAsync(id);
+            var listapreguntas = await _context.ListasPreguntas.FindAsync(id);
             if (listapreguntas != null)
             {
                 ListaPreguntas = listapreguntas;
-                _context.ListaPreguntas.Remove(ListaPreguntas);
+                _context.ListasPreguntas.Remove(ListaPreguntas);
                 await _context.SaveChangesAsync();
             }
 

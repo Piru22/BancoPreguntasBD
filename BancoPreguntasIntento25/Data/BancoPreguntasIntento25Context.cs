@@ -14,6 +14,6 @@ namespace BancoPreguntasIntento25.Data
         {
         }
         public DbSet<Usuarios> Usuario { get; set; }
-        public DbSet<ListaPreguntas> ListaPreguntas { get; set; }
+        public DbSet<ListaPreguntas> ListasPreguntas { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public async Task OnGetAsync()
         {
-            var q = _context.ListaPreguntas.AsQueryable();
+            var q = _context.ListasPreguntas.AsQueryable();
 
             if (Unidad.HasValue)
                 q = q.Where(p => p.Unidad == Unidad.Value);
