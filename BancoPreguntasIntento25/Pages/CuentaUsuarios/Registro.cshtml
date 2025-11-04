@@ -1,19 +1,30 @@
 ﻿@page
 @model BancoPreguntasIntento25.Pages.CuentaUsuarios.RegistroModel
+@{
+    Layout = "_Landing";
+    ViewData["Title"] = "Registro";
+}
 
-<h2>Registro de Usuario</h2>
+<div class="login-container">
 
-<form method="post">
-    <div>
-        <label>Correo:</label>
-        <input asp-for="Email" />
-    </div>
-    <div>
-        <label>Contraseña:</label>
-        <input asp-for="Clave" type="password" />
-    </div>
-    <button type="submit">Registrarse</button>
-</form>
+    <h1 class="login-title">CREAR CUENTA</h1>
 
-<p style="color:red">@Model.Mensaje</p>
-<p style="color:green">@Model.MensajeExito</p>
+    <form method="post" class="login-form">
+
+        <div class="input-group">
+            <span class="input-icon">👤</span>
+            <input asp-for="Email" type="email" placeholder="Ingresar email..." />
+        </div>
+
+        <div class="input-group">
+            <span class="input-icon">🔑</span>
+            <input asp-for="Clave" type="password" placeholder="Ingresar contraseña..." />
+        </div>
+
+        <button type="submit" class="btn-custom">REGISTRARSE</button>
+
+        <p style="color:red">@Model.Mensaje</p>
+        <p style="color:green">@Model.MensajeExito</p>
+
+    </form>
+</div>
