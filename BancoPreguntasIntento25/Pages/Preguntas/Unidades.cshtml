@@ -1,0 +1,12 @@
+﻿@page "{Asignatura}"
+@model BancoPreguntasIntento25.Pages.Preguntas.UnidadesModel
+
+<h2>Unidades de @Model.Asignatura</h2>
+<ul>
+@foreach (var u in Model.Unidades)
+{
+    <li><a asp-page="./Subunidades"
+           asp-route-Asignatura="@Model.Asignatura"
+           asp-route-Unidad="@u">Unidad @u</a></li>
+}
+</ul>

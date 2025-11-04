@@ -1,0 +1,112 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Preguntas.ExplorarModel
+@{
+    ViewData["Title"] = "Explorar preguntas";
+}
+
+<h2 style="margin:10px 0;">Explorar por asignatura → unidad → subunidad</h2>
+
+<!-- Paso 1: Asignaturas -->
+<section style="margin-bottom:18px;">
+    <h4>1) Asignaturas</h4>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+        @foreach (var a in Model.Asignaturas)
+        {
+            <a asp-page="./Explorar"
+               asp-route-asig="@a"
+               style="padding:8px 12px; border-radius:12px; background:#eee; text-decoration:none; color:#333;">
+                @a
+            </a>
+        }
+    </div>
+</section>
+
+@if (!string.IsNullOrWhiteSpace(Model.asig))
+{
+    <!-- Paso 2: Unidades -->
+    <section style="margin-bottom:18px;">
+        <h4>2) Unidades de <em>@Model.asig</em></h4>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            @foreach (var u in Model.Unidades)
+            {
+                <a asp-page="./Explorar"
+                   asp-route-asig="@Model.asig"
+                   asp-route-unidad="@u"
+                   style="padding:8px 12px; border-radius:12px; background:#eee; text-decoration:none; color:#333;">
+                    Unidad @u
+                </a>
+            }
+        </div>
+        <div style="margin-top:8px;">
+            <a asp-page="./Explorar" style="color:#a87c4f;">← Cambiar asignatura</a>
+        </div>
+    </section>
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.asig) && Model.unidad.HasValue)
+{
+    <!-- Paso 3: Subunidades -->
+    <section style="margin-bottom:18px;">
+        <h4>3) Subunidades de <em>@Model.asig</em> · Unidad @Model.unidad</h4>
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+            @foreach (var s in Model.SubUnidades)
+            {
+                <a asp-page="./Explorar"
+                   asp-route-asig="@Model.asig"
+                   asp-route-unidad="@Model.unidad"
+                   asp-route-sub="@s"
+                   style="padding:8px 12px; border-radius:12px; background:#eee; text-decoration:none; color:#333;">
+                    @s
+                </a>
+            }
+        </div>
+        <div style="margin-top:8px;">
+            <a asp-page="./Explorar" asp-route-asig="@Model.asig" style="color:#a87c4f;">← Cambiar unidad</a>
+        </div>
+    </section>
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.asig) && Model.unidad.HasValue && !string.IsNullOrWhiteSpace(Model.sub))
+{
+    <!-- Paso 4: Preguntas + respuestas -->
+    <section>
+        <h4>4) Preguntas de <em>@Model.asig</em> · Unidad @Model.unidad · @Model.sub</h4>
+
+        @if (Model.Preguntas.Count == 0)
+        {
+            <p>No hay preguntas para esta combinación.</p>
+        }
+        else
+        {
+            <div style="display:flex; flex-direction:column; gap:14px;">
+                @foreach (var p in Model.Preguntas)
+                {
+                    <div style="border:1px solid #ddd; border-radius:10px; padding:12px; background:#fafafa;">
+                        <div style="margin-bottom:6px;">
+                            <strong>Pregunta @p.PreguntaId:</strong> @p.Texto
+                        </div>
+                        <ul style="margin:0 0 6px 18px; line-height:1.8;">
+                            <li><strong>Correcta:</strong> @p.RespuestaCorrecta</li>
+                            <li>Incorrecta 1: @p.RespuestaIncorrecta1</li>
+                            <li>Incorrecta 2: @p.RespuestaIncorrecta2</li>
+                            <li>Incorrecta 3: @p.RespuestaIncorrecta3</li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        }
+
+        <div style="margin-top:10px;">
+            <a asp-page="./Explorar"
+               asp-route-asig="@Model.asig"
+               asp-route-unidad="@Model.unidad"
+               style="color:#a87c4f;">
+                ← Cambiar subunidad
+            </a>
+        </div>
+    </section>
+}
+
+<p style="margin-top:18px;">
+    <a asp-page="./Index">← Volver al banco de preguntas</a>
+</p>

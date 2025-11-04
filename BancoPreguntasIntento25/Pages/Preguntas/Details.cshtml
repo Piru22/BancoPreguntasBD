@@ -1,0 +1,57 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Preguntas.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<h1>Detalles</h1>
+
+<div>
+    <h4>ListaPreguntas</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Texto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Texto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.RespuestaCorrecta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.RespuestaCorrecta)
+        </dd>
+        <dt class="col-sm-2">Respuesta Incorrecta 1</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.ListaPreguntas.RespuestaIncorrecta1)</dd>
+
+        <dt class="col-sm-2">Respuesta Incorrecta 2</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.ListaPreguntas.RespuestaIncorrecta2)</dd>
+
+        <dt class="col-sm-2">Respuesta Incorrecta 3</dt>
+        <dd class="col-sm-10">@Html.DisplayFor(m => m.ListaPreguntas.RespuestaIncorrecta3)</dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Asignatura)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Asignatura)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Unidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Unidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.SubUnidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.SubUnidad)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ListaPreguntas.PreguntaId">Edit</a> |
+    <a asp-page="./Index">Volver a la lista</a>
+</div>

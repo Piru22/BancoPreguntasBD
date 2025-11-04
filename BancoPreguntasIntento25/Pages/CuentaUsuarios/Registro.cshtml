@@ -1,0 +1,19 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.CuentaUsuarios.RegistroModel
+
+<h2>Registro de Usuario</h2>
+
+<form method="post">
+    <div>
+        <label>Correo:</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input asp-for="Clave" type="password" />
+    </div>
+    <button type="submit">Registrarse</button>
+</form>
+
+<p style="color:red">@Model.Mensaje</p>
+<p style="color:green">@Model.MensajeExito</p>

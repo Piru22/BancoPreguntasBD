@@ -1,0 +1,52 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Preguntas.DeleteModel
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Seguro que quiere eliminar esta pregunta?</h3>
+<div>
+    <h4>ListaPreguntas</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Texto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Texto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.RespuestaCorrecta)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.RespuestaCorrecta)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Asignatura)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Asignatura)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.Unidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.Unidad)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ListaPreguntas.SubUnidad)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ListaPreguntas.SubUnidad)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ListaPreguntas.PreguntaId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Volver a la lista</a>
+    </form>
+</div>

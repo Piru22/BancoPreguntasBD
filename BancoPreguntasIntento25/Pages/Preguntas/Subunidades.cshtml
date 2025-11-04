@@ -1,0 +1,23 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Preguntas.SubunidadesModel
+
+<h2>Subunidades de @Model.Asignatura — Unidad @Model.Unidad</h2>
+
+<ul>
+    @foreach (var s in Model.SubUnidades)
+    {
+        <li>
+            <a asp-page="/Preguntas/VerRespuestas"
+               asp-route-Asignatura="@Model.Asignatura"
+               asp-route-Unidad="@Model.Unidad"
+               asp-route-Sub="@s">
+                @s
+            </a>
+        </li>
+    }
+</ul>
+
+<p>
+    <a asp-page="/Preguntas/Unidades" asp-route-Asignatura="@Model.Asignatura">← Cambiar unidad</a>
+</p>
+

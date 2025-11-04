@@ -1,0 +1,36 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Preguntas.VerRespuestasModel
+
+@{
+    var titulo = (!string.IsNullOrWhiteSpace(Model.Asignatura)
+                  || Model.Unidad != 0
+                  || !string.IsNullOrWhiteSpace(Model.Sub))
+        ? $"{(Model.Asignatura ?? "Todas")} · Unidad {Model.Unidad} · {(Model.Sub ?? "todas")}"
+        : "Todas las preguntas";
+}
+<h2>@titulo</h2>
+
+@if (Model.Preguntas.Count == 0)
+{
+    <p>No hay preguntas para esta combinación.</p>
+}
+else
+{
+    <ul>
+        @foreach (var p in Model.Preguntas)
+        {
+            <li style="margin-bottom:10px;">
+                <strong>@p.Texto</strong><br />
+                Correcta: @p.RespuestaCorrecta<br />
+                Incorrecta 1: @p.RespuestaIncorrecta1<br />
+                Incorrecta 2: @p.RespuestaIncorrecta2<br />
+                Incorrecta 3: @p.RespuestaIncorrecta3
+            </li>
+        }
+    </ul>
+}
+
+<p style="margin-top:10px;">
+    <a asp-page="/Preguntas/Asignaturas">← Ver por asignaturas</a> |
+    <a asp-page="/Preguntas/Index">Volver al banco</a>
+</p>

@@ -1,0 +1,18 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.CuentaUsuarios.LoginModel
+
+<h2>Iniciar Sesión</h2>
+
+<form method="post">
+    <div>
+        <label>Correo:</label>
+        <input asp-for="Email" />
+    </div>
+    <div>
+        <label>Contraseña:</label>
+        <input asp-for="Clave" type="password" />
+    </div>
+    <button type="submit">Ingresar</button>
+</form>
+
+<p style="color:red">@Model.Mensaje</p>
