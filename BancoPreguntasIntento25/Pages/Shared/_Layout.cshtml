@@ -1,9 +1,7 @@
 ﻿@{
-    // Oculta header y footer por completo si es true (no lo usaremos aquí, pero lo dejamos)
     var hideChrome = ViewData["HideChrome"] as bool? == true;
-
-    // NUEVO: si es true, deja la barra superior vacía (sin marca ni links)
     var hideNav = ViewData["HideNav"] as bool? == true;
+    var hideFooter = ViewData["HideFooter"] as bool? == true;
 }
 
 <!DOCTYPE html>
@@ -11,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BancoPreguntasIntento25</title>
+    <title>@ViewData["Title"] - BancoPreguntas</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -21,14 +19,15 @@
     @if (!hideChrome)
     {
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    @if (!hideNav)
-                    {
+            <!-- Un solo navbar con altura fija y sin margen inferior -->
+            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom shadow-sm mb-0" style="min-height:56px;">
+                @if (!hideNav)
+                {
+                    <div class="container">
                         <a class="navbar-brand" asp-area="" asp-page="/Index">BancoPreguntasIntento25</a>
 
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Alternar navegación">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
@@ -42,19 +41,19 @@
                                 </li>
                             </ul>
                         </div>
-                    }
-                    else
-                    {
-                        <!-- Barra vacía y botón flotante de cerrar sesión -->
-                        <div style="min-height: 45px;"></div>
-
-                        <!-- conserva la altura de la barra -->
-                        <div class="nav-empty-fixed">
-                            <a asp-page="/CuentaUsuarios/Logout" class="btn-logout">🔒 Cerrar sesión</a>
-                        </div>
-                    }
-                </div>
+                    </div>
+                }
+                <!-- Si hideNav es true, no renderizamos container ni rellenos.
+                     El nav ya dibuja la franja superior con su altura. -->
             </nav>
+
+            @* Botón flotante sólo cuando la barra está vacía *@
+            @if (hideNav)
+            {
+                <div class="nav-empty-fixed">
+                    <a asp-page="/CuentaUsuarios/Logout" class="btn-logout">🔒 Cerrar sesión</a>
+                </div>
+            }
         </header>
     }
 
@@ -64,11 +63,12 @@
         </main>
     </div>
 
-    @if (!hideChrome)
+    @if (!hideFooter)
     {
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2025 - BancoPreguntasIntento25 - <a asp-area="" asp-page="/Privacy">Privacidad</a>
+        <footer class="footer text-muted" style="border-top:none;">
+            <div class="container text-center" style="font-size:0.9rem;color:#8b847d;">
+                &copy; 2025 - BancoPreguntasIntento25 -
+                <a asp-area="" asp-page="/Privacy" style="color:#8b847d;text-decoration:none;">Privacidad</a>
             </div>
         </footer>
     }
@@ -76,7 +76,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

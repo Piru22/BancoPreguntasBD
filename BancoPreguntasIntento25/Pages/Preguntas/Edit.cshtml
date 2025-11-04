@@ -1,73 +1,76 @@
-﻿@page
+﻿@page "{id:int}"
 @model BancoPreguntasIntento25.Pages.Preguntas.EditModel
 
 @{
-    ViewData["Title"] = "Editar";
+    ViewData["Title"] = "Editar Pregunta";
+    ViewData["HideNav"] = true;
+    ViewData["HideFooter"] = true; // 🔹 Oculta el footer en esta vista
 }
 
-<h1>Editar</h1>
+<div class="form-wrapper">
+    <div class="form-card">
+        <h1 class="login-title">Editar Pregunta</h1>
 
-<h4>ListaPreguntas</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
         <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ListaPreguntas.PreguntaId" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="form-group">
-                <label asp-for="ListaPreguntas.Texto" class="control-label"></label>
+                <label asp-for="ListaPreguntas.Texto">Texto</label>
                 <input asp-for="ListaPreguntas.Texto" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.Texto" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ListaPreguntas.RespuestaCorrecta" class="control-label"></label>
+                <label asp-for="ListaPreguntas.RespuestaCorrecta">Respuesta Correcta</label>
                 <input asp-for="ListaPreguntas.RespuestaCorrecta" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.RespuestaCorrecta" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ListaPreguntas.RespuestaIncorrecta1"></label>
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta1">Respuesta Incorrecta 1</label>
                 <input asp-for="ListaPreguntas.RespuestaIncorrecta1" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta1" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ListaPreguntas.RespuestaIncorrecta2"></label>
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta2">Respuesta Incorrecta 2</label>
                 <input asp-for="ListaPreguntas.RespuestaIncorrecta2" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta2" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ListaPreguntas.RespuestaIncorrecta3"></label>
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta3">Respuesta Incorrecta 3</label>
                 <input asp-for="ListaPreguntas.RespuestaIncorrecta3" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta3" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="ListaPreguntas.Asignatura" class="control-label"></label>
+                <label asp-for="ListaPreguntas.Asignatura">Asignatura</label>
                 <input asp-for="ListaPreguntas.Asignatura" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.Asignatura" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ListaPreguntas.Unidad" class="control-label"></label>
-                <input asp-for="ListaPreguntas.Unidad" class="form-control" />
+                <label asp-for="ListaPreguntas.Unidad">Unidad</label>
+                <input asp-for="ListaPreguntas.Unidad" type="number" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.Unidad" class="text-danger"></span>
             </div>
+
             <div class="form-group">
-                <label asp-for="ListaPreguntas.SubUnidad" class="control-label"></label>
+                <label asp-for="ListaPreguntas.SubUnidad">SubUnidad</label>
                 <input asp-for="ListaPreguntas.SubUnidad" class="form-control" />
                 <span asp-validation-for="ListaPreguntas.SubUnidad" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Volver</a>
             </div>
         </form>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
     </div>
 </div>
-
-<div>
-    <a asp-page="./Index">Volver a la lista</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
