@@ -5,70 +5,72 @@
     ViewData["Title"] = "Banco de Preguntas";
 }
 
-<h1>Banco de Preguntas</h1>
+<div class="container-wide">
 
-<p>
-    <a asp-page="Agregar">Agregar nueva pregunta</a>
-</p>
+    <h1 class="page-title">Banco de Preguntas</h1>
 
-<!-- 🔎 Filtro por Unidad -->
-<form method="get" style="margin: 16px 0;">
-    <input type="number"
-           name="Unidad"
-           value="@(Model.Unidad?.ToString() ?? "")"
-           placeholder="Buscar por unidad..."
-           style="padding:6px 10px; border:1px solid #ccc; border-radius:6px; width:200px;" />
-    <button type="submit" style="padding:6px 12px;">Filtrar</button>
-    <a asp-page="./Index" style="margin-left:8px;">Limpiar</a>
-</form>
+    <div class="toolbar">
+        <div class="toolbar-left">
+            <!-- tu enlace existente, ahora con estilo btn -->
+            <a asp-page="./Create" class="btn btn-primary">➕ Nueva Pregunta</a>
 
+            <!-- tus botones de flujo, respetando rutas -->
+            <a asp-page="/Preguntas/Asignaturas" class="btn btn-ghost">📚 Ver asignaturas</a>
+            <a asp-page="/Preguntas/VerRespuestas" class="btn btn-ghost">👁️ Ver preguntas</a>
+        </div>
 
-@if (Model.Unidad.HasValue)
-{
-    <div style="margin-bottom:10px;">Mostrando resultados de la <strong>Unidad @Model.Unidad</strong>.</div>
-}
+        <div class="toolbar-right">
+            <!-- tu filtro GET, mismos nombres/valores -->
+            <form method="get" style="display:flex; gap:10px; align-items:center;">
+                <div class="search">
+                    <input type="number"
+                           name="Unidad"
+                           value="@(Model.Unidad?.ToString() ?? "")"
+                           placeholder="Buscar por unidad..." />
+                </div>
+                <button type="submit" class="btn btn-primary">Filtrar</button>
+                <a asp-page="./Index" class="btn btn-ghost">Limpiar</a>
+            </form>
+        </div>
+    </div>
 
-<div style="display:flex; gap:12px; margin:16px 0;">
-    <!-- Flujo por pasos -->
-    <a asp-page="/Preguntas/Asignaturas"
-       style="background:#6c757d;color:#fff;border:none;border-radius:16px;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block;">
-        📚 Ver asignaturas
-    </a>
+    @if (Model.Unidad.HasValue)
+    {
+        <div style="margin-bottom:10px; color:var(--muted);">
+            Mostrando resultados de la <strong>Unidad @Model.Unidad</strong>.
+        </div>
+    }
 
-    <!-- Ver todas (o filtradas si pasás querystring) -->
-    <a asp-page="/Preguntas/VerRespuestas"
-       style="background:#a87c4f;color:#fff;border:none;border-radius:16px;padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block;">
-        👁️ Ver preguntas
-    </a>
-</div>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Texto)</th>
-            <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].RespuestaCorrecta)</th>
-            <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Asignatura)</th>
-            <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Unidad)</th>
-            <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].SubUnidad)</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.ListaPreguntas)
-        {
+    <table class="table-bank">
+        <thead>
             <tr>
-                <td>@Html.DisplayFor(modelItem => item.Texto)</td>
-                <td>@Html.DisplayFor(modelItem => item.RespuestaCorrecta)</td>
-                <td>@Html.DisplayFor(modelItem => item.Asignatura)</td>
-                <td>@Html.DisplayFor(modelItem => item.Unidad)</td>
-                <td>@Html.DisplayFor(modelItem => item.SubUnidad)</td>
-                <td>
-                    <a asp-page="./Edit" asp-route-id="@item.PreguntaId">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.PreguntaId">Details</a> |
-                    <a asp-page="./Delete" asp-route-id="@item.PreguntaId">Delete</a>
-                </td>
+                <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Texto)</th>
+                <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].RespuestaCorrecta)</th>
+                <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Asignatura)</th>
+                <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].Unidad)</th>
+                <th>@Html.DisplayNameFor(model => model.ListaPreguntas[0].SubUnidad)</th>
+                <th style="width:240px;">Acciones</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ListaPreguntas)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Texto)</td>
+                    <td>@Html.DisplayFor(modelItem => item.RespuestaCorrecta)</td>
+                    <td><span class="chip">@Html.DisplayFor(modelItem => item.Asignatura)</span></td>
+                    <td><span class="chip">@Html.DisplayFor(modelItem => item.Unidad)</span></td>
+                    <td><span class="chip">@Html.DisplayFor(modelItem => item.SubUnidad)</span></td>
+                    <td>
+                        <div class="actions">
+                            <a asp-page="./Edit" asp-route-id="@item.PreguntaId" class="btn btn-ghost">✏️ Editar</a>
+                            <a asp-page="./Details" asp-route-id="@item.PreguntaId" class="btn btn-ghost">📄 Detalles</a>
+                            <a asp-page="./Delete" asp-route-id="@item.PreguntaId" class="btn btn-danger">🗑 Borrar</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

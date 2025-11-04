@@ -3,67 +3,72 @@
 
 @{
     ViewData["Title"] = "Nueva Pregunta";
+    ViewData["HideChrome"] = true; // si querés quitar navbar/footer como en las otras pantallas
 }
 
-<h1>Nueva Pregunta</h1>
+<div class="form-wrapper">
+    <div class="form-card">
+        <h1 class="login-title">Nueva Pregunta</h1>
 
-<form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.Texto"></label>
-        <input asp-for="ListaPreguntas.Texto" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.Texto" class="text-danger"></span>
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.Texto"></label>
+                <input asp-for="ListaPreguntas.Texto" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.Texto" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.RespuestaCorrecta"></label>
+                <input asp-for="ListaPreguntas.RespuestaCorrecta" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.RespuestaCorrecta" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta1">Respuesta Incorrecta 1</label>
+                <input asp-for="ListaPreguntas.RespuestaIncorrecta1" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta1" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta2">Respuesta Incorrecta 2</label>
+                <input asp-for="ListaPreguntas.RespuestaIncorrecta2" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta2" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.RespuestaIncorrecta3">Respuesta Incorrecta 3</label>
+                <input asp-for="ListaPreguntas.RespuestaIncorrecta3" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta3" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.Asignatura"></label>
+                <input asp-for="ListaPreguntas.Asignatura" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.Asignatura" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.Unidad"></label>
+                <input asp-for="ListaPreguntas.Unidad" type="number" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.Unidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ListaPreguntas.SubUnidad"></label>
+                <input asp-for="ListaPreguntas.SubUnidad" class="form-control" />
+                <span asp-validation-for="ListaPreguntas.SubUnidad" class="text-danger"></span>
+            </div>
+
+            <div class="form-buttons">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <a asp-page="./Index" class="btn btn-secondary">Volver</a>
+            </div>
+        </form>
+
+        @section Scripts {
+            <partial name="_ValidationScriptsPartial" />
+        }
     </div>
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.RespuestaCorrecta"></label>
-        <input asp-for="ListaPreguntas.RespuestaCorrecta" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.RespuestaCorrecta" class="text-danger"></span>
-    </div>
-
-    <!-- ⚠️ NUEVOS CAMPOS -->
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.RespuestaIncorrecta1">Respuesta Incorrecta 1</label>
-        <input asp-for="ListaPreguntas.RespuestaIncorrecta1" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta1" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.RespuestaIncorrecta2">Respuesta Incorrecta 2</label>
-        <input asp-for="ListaPreguntas.RespuestaIncorrecta2" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta2" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.RespuestaIncorrecta3">Respuesta Incorrecta 3</label>
-        <input asp-for="ListaPreguntas.RespuestaIncorrecta3" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.RespuestaIncorrecta3" class="text-danger"></span>
-    </div>
-    <!-- /NUEVOS CAMPOS -->
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.Asignatura"></label>
-        <input asp-for="ListaPreguntas.Asignatura" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.Asignatura" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.Unidad"></label>
-        <input asp-for="ListaPreguntas.Unidad" type="number" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.Unidad" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="ListaPreguntas.SubUnidad"></label>
-        <input asp-for="ListaPreguntas.SubUnidad" class="form-control" />
-        <span asp-validation-for="ListaPreguntas.SubUnidad" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <a asp-page="./Index" class="btn btn-secondary">Volver</a>
-</form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+</div>

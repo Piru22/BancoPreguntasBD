@@ -212,3 +212,227 @@ body {
     .details-inline dd {
         margin: 0;
     }
+
+    /*-----------------------*/
+:root {
+    --bg: #f7f1e8;
+    --text: #3a342f;
+    --muted: #6f6a66;
+    --card: #f1e8dc;
+    --table-head: #efe5d7;
+    --accent: #a67c52;
+    --accent-hover: #8b6545;
+    --line: #e6dbcb;
+    --danger: #b74a4a;
+    --danger-weak: #f7e3e3;
+}
+
+/* contenedor ancho pero centrado */
+.container-wide {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* título */
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 4px 0 18px;
+    color: var(--text);
+}
+
+/* barra superior */
+.toolbar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.toolbar-left {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.toolbar-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* botón base */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+    .btn:focus {
+        outline: 2px solid transparent;
+        box-shadow: 0 0 0 2px rgba(0,0,0,.06);
+    }
+
+/* variantes */
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+    .btn-primary:hover {
+        background: var(--accent-hover);
+    }
+
+.btn-ghost {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
+}
+
+    .btn-ghost:hover {
+        background: #faf6ef;
+    }
+
+.btn-danger {
+    background: var(--danger);
+    color: #fff;
+}
+
+    .btn-danger:hover {
+        filter: brightness(.95);
+    }
+
+/* grupo búsqueda */
+.search {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 6px 8px;
+    min-width: 260px;
+}
+
+    .search input {
+        border: none;
+        outline: none;
+        flex: 1;
+        background: transparent;
+        padding: 6px 8px;
+    }
+
+/* tabla */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .table th {
+        background: var(--table-head);
+        text-align: left;
+        font-weight: 700;
+        padding: 10px 12px;
+        color: var(--text);
+    }
+
+    .table td {
+        padding: 10px 12px;
+        border-top: 1px solid var(--line);
+        color: var(--text);
+    }
+
+    .table tr:hover td {
+        background: #fbf6ee;
+    }
+
+/* actions */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* chips opcionales */
+.chip {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .85rem;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--line);
+}
+
+/*AJUSTE DE AGREGAR NUEVA PREGUNTA*/
+/* Ajuste de altura y márgenes en formularios tipo Create/Edit */
+.form-wrapper {
+    min-height: calc(100vh - 180px); /* ocupa casi toda la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* arranca más arriba */
+    padding-top: 30px; /* bajalo o subilo a gusto */
+}
+
+.form-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.05);
+    width: 100%;
+    max-width: 700px;
+}
+
+/* CENTRAMOS EL TITULO Y LOS BOTONES DEL FORMULARIO Create/Edit */
+
+.form-card h1 {
+    text-align: center;
+    color: #4a3f35;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    font-size: 2rem; /* un poco más grande */
+}
+
+/* Centramos los botones uno al lado del otro */
+.form-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center; /* centrado horizontal */
+    gap: 20px; /* espacio entre botones */
+}
+
+/* Ajustamos los botones para que se vean coherentes con la paleta */
+.btn-primary {
+    background-color: #a67c52;
+    border: none;
+    padding: 10px 28px;
+    font-weight: bold;
+}
+
+    .btn-primary:hover {
+        background-color: #8b6545;
+    }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 28px;
+    font-weight: bold;
+}
+
+    .btn-secondary:hover {
+        background-color: #5c6469;
+    }
