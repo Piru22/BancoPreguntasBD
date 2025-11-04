@@ -1,22 +1,214 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    background-color: #f7f1e8; /* mismo color que el fondo de la imagen */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
 }
+
+.login-logo {
+    width: 200px; /* ajustá el tamaño */
+    margin-bottom: 15px;
+}
+/* Layout de bienvenida */
+
+.welcome-layout {
+    display: flex;
+    align-items: center; /* centra verticalmente */
+    justify-content: center; /* centra horizontalmente */
+    min-height: 90vh; /* ocupa casi toda la pantalla */
+    gap: 50px; /* espacio entre columnas */
+}
+/* Columna izquierda */
+
+.welcome-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.welcome-img {
+    max-width: 100%;
+    height: auto;
+}
+/* Columna derecha */
+
+.welcome-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+/* Contenedor de botones */
+
+.welcome-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+}
+/* Botón marrón */
+
+.btn-custom {
+    background-color: #a67c52;
+    color: #fff !important;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+/* Tamaño grande */
+
+.btn-large {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+    width: 250px;
+    text-align: center;
+}
+
+.btn-custom:hover {
+    background-color: #8b6545;
+}
+/* ===== LOGIN ===== */
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #4a3f35;
+    letter-spacing: 1px;
+}
+
+.login-form {
+    background: transparent;
+    padding: 20px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    padding: 8px 15px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-icon {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: #8b6545;
+}
+
+.login-form input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-size: 1rem;
+    padding: 8px;
+    border-radius: 25px;
+}
+
+    .login-form input::placeholder {
+        color: #aaa;
+    }
+/* Botón marrón */
+
+.btn-custom {
+    background-color: #a67c52;
+    color: #fff !important;
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+    .btn-custom:hover {
+        background-color: #8b6545;
+    }
+
+.login-form button {
+    width: 100%; /* mismo ancho que los inputs */
+    border-radius: 25px; /* igual que los inputs */
+    margin-top: 5px; /* pequeño espacio arriba */
+}
+/* == EDITAR PREGUNTA === */
+
+.edit-container {
+    display: flex;
+    justify-content: center; /* centra horizontal */
+    align-items: center; /* centra vertical */
+    min-height: 80vh; /* ocupa casi toda la pantalla */
+}
+
+.edit-card {
+    background: transparent; /* respeta tu fondo */
+    padding: 20px;
+    width: 400px; /* ancho fijo para que quede prolijo */
+}
+/* DETALLES */
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* primera columna fija, segunda flexible */
+    gap: 10px 20px; /* espacio entre filas y columnas */
+    width: 500px; /* ancho del bloque */
+    margin: 0 auto; /* centrar horizontal */
+}
+
+    .details-grid dt {
+        font-weight: bold;
+        color: #4a3f35;
+        text-align: right; /* alinear etiquetas a la derecha */
+        margin: 0;
+    }
+
+    .details-grid dd {
+        margin: 0;
+        text-align: left; /* valores alineados a la izquierda */
+    }
+/* BORRAR */
+
+.delete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.details-inline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 400px; /* controla el ancho del bloque */
+}
+
+    .details-inline div {
+        display: flex;
+        justify-content: space-between; /* campo a la izquierda, valor a la derecha */
+        padding: 5px 10px;
+        border-bottom: 1px solid #ddd; /* línea separadora opcional */
+    }
+
+    .details-inline dt {
+        font-weight: bold;
+        margin: 0;
+        color: #4a3f35;
+    }
+
+    .details-inline dd {
+        margin: 0;
+    }

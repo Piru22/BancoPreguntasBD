@@ -1,25 +1,22 @@
 ﻿@page
 @model BancoPreguntasIntento25.Pages.IndexModel
 @{
-    Layout = "_Layout";
+    Layout = "_Landing";
 }
 
-<div style="display:flex; justify-content:center; align-items:center; min-height:70vh; flex-direction:column; text-align:center;">
-    <h1 style="margin-bottom:30px; font-weight:bold;">BANCO DE PREGUNTAS</h1>
+<div class="welcome-layout">
 
-    <img src="~/images/profesores.png" alt="Registro de Profesores" style="max-width:350px; margin-bottom:40px;" />
-
-    <div style="display:flex; flex-direction:column; gap:20px; width:200px;">
-        <a asp-page="/CuentaUsuarios/Login" style="text-decoration:none;">
-            <button style="width:100%; padding:12px; border:none; border-radius:25px; background-color:#a87c4f; color:white; font-size:16px; cursor:pointer;">
-                Iniciar Sesión
-            </button>
-        </a>
-
-        <a asp-page="/CuentaUsuarios/Registro" style="text-decoration:none;">
-            <button style="width:100%; padding:12px; border:none; border-radius:25px; background-color:#a87c4f; color:white; font-size:16px; cursor:pointer;">
-                Registrarse
-            </button>
-        </a>
+    <div class="welcome-left">
+        <img src="~/images/profesores.png" alt="Registro de Profesores" class="welcome-img" />
     </div>
+
+    <div class="welcome-right">
+        <div class="welcome-actions">
+            <h1 class="login-title">BANCO DE PREGUNTAS</h1>
+
+            <a asp-page="/CuentaUsuarios/Login" class="btn-custom btn-large">Iniciar Sesión</a>
+            <a asp-page="/CuentaUsuarios/Registro" class="btn-custom btn-large">Registrarse</a>
+        </div>
+    </div>
+
 </div>
