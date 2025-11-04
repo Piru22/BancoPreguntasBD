@@ -45,8 +45,13 @@
                     }
                     else
                     {
-                        <!-- Barra vacía: dejamos el contenedor para mantener la altura -->
-                        <div style="min-height: 1.5rem;"></div>
+                        <!-- Barra vacía y botón flotante de cerrar sesión -->
+                        <div style="min-height: 45px;"></div>
+
+                        <!-- conserva la altura de la barra -->
+                        <div class="nav-empty-fixed">
+                            <a asp-page="/CuentaUsuarios/Logout" class="btn-logout">🔒 Cerrar sesión</a>
+                        </div>
                     }
                 </div>
             </nav>
