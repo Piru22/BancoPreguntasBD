@@ -436,3 +436,84 @@ body {
     .btn-secondary:hover {
         background-color: #5c6469;
     }
+
+/* Contenedor centrado más angosto para listados */
+.container-narrow {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+/* Título centrado */
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 6px 0 18px;
+    color: #3a342f;
+}
+
+/* Toolbar centrada y en dos filas en pantallas chicas */
+.toolbar-center {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+    .toolbar-center .toolbar-left,
+    .toolbar-center .toolbar-right {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* Tabla con más aire y lectura */
+.table-bank {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+    .table-bank th {
+        background: var(--table-head);
+        text-align: left;
+        font-weight: 700;
+        padding: 12px 14px;
+    }
+
+    .table-bank td {
+        padding: 14px 14px;
+        border-top: 1px solid var(--line);
+        vertical-align: middle;
+    }
+
+    .table-bank tbody tr:nth-child(odd) td {
+        background: #fcf7ef;
+    }
+
+/* Columna de texto controlada */
+.col-text {
+    max-width: 560px;
+    white-space: normal;
+    line-height: 1.35;
+}
+
+/* Acciones ordenadas */
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+    .actions .btn {
+        border-radius: 14px;
+        padding: 8px 14px;
+    }

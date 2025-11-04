@@ -1,7 +1,9 @@
 ﻿@{
-    // Si en la página ponés ViewData["HideChrome"] = true;
-    // se oculta el header y el footer
+    // Oculta header y footer por completo si es true (no lo usaremos aquí, pero lo dejamos)
     var hideChrome = ViewData["HideChrome"] as bool? == true;
+
+    // NUEVO: si es true, deja la barra superior vacía (sin marca ni links)
+    var hideNav = ViewData["HideNav"] as bool? == true;
 }
 
 <!DOCTYPE html>
@@ -11,61 +13,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BancoPreguntasIntento25</title>
 
-    <!-- Estilos -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BancoPreguntasIntento25.styles.css" asp-append-version="true" />
 </head>
-
 <body>
-    @* 🔹 Header (navbar) solo si hideChrome es false *@
     @if (!hideChrome)
     {
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
-                    <!-- Marca (nombre del proyecto) -->
-                    <a class="navbar-brand" asp-area="" asp-page="/Index">BancoPreguntasIntento25</a>
+                    @if (!hideNav)
+                    {
+                        <a class="navbar-brand" asp-area="" asp-page="/Index">BancoPreguntasIntento25</a>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Index">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
-                            </li>
-                        </ul>
-                    </div>
+                        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                            <ul class="navbar-nav flex-grow-1">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Index">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacidad</a>
+                                </li>
+                            </ul>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Barra vacía: dejamos el contenedor para mantener la altura -->
+                        <div style="min-height: 1.5rem;"></div>
+                    }
                 </div>
             </nav>
         </header>
     }
 
-    @* 🔹 Cuerpo principal *@
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    @* 🔹 Footer solo si hideChrome es false *@
     @if (!hideChrome)
     {
         <footer class="border-top footer text-muted">
             <div class="container">
-                &copy; 2025 - BancoPreguntasIntento25 -
-                <a asp-area="" asp-page="/Privacy">Privacidad</a>
+                &copy; 2025 - BancoPreguntasIntento25 - <a asp-area="" asp-page="/Privacy">Privacidad</a>
             </div>
         </footer>
     }
 
-    <!-- Scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
