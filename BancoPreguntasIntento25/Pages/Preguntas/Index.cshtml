@@ -58,7 +58,25 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.Texto)</td>
                     <td>@Html.DisplayFor(modelItem => item.RespuestaCorrecta)</td>
-                    <td><span class="chip">@Html.DisplayFor(modelItem => item.Asignatura)</span></td>
+
+                    <!-- Celda reemplazada: Asignatura + indicador de estado -->
+                    <td>
+                        <span class="chip">@item.Asignatura</span>
+                        @{
+                            var key = (item.Asignatura ?? string.Empty).Trim();
+                            var unidades = Model.UnidadesPorAsignatura.TryGetValue(key, out var c) ? c : 0;
+
+                            var statusClass = unidades >= 4 ? "sq-green"
+                                             : unidades == 3 ? "sq-yellow"
+                                             : "sq-red";
+
+                            var estadoTxt = unidades >= 4 ? "Completa"
+                                          : unidades == 3 ? "Medio completa"
+                                          : "Incompleta";
+                        }
+                        <span class="sq @statusClass" title="@($"{unidades} unidad(es) — {estadoTxt}")"></span>
+                    </td>
+
                     <td><span class="chip">@Html.DisplayFor(modelItem => item.Unidad)</span></td>
                     <td><span class="chip">@Html.DisplayFor(modelItem => item.SubUnidad)</span></td>
                     <td>

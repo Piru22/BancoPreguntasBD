@@ -610,3 +610,26 @@ body {
     transform: translateY(-1px);
 }
 
+/* Indicador cuadrado por estado de Asignatura */
+.sq {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+    border: 1px solid rgba(0,0,0,.08);
+}
+
+.sq-green {
+    background: #60b26b;
+}
+/* completa (4-5) */
+.sq-yellow {
+    background: #e2b84b;
+}
+/* medio completa (3) */
+.sq-red {
+    background: #d86a6a;
+}
+/* incompleta (1-2) */

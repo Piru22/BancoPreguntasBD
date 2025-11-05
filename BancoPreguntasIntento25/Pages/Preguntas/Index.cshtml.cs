@@ -21,6 +21,9 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public IList<ListaPreguntas> ListaPreguntas { get; set; } = default!;
 
+        // Diccionario: asignatura -> número de unidades distintas
+        public Dictionary<string, int> UnidadesPorAsignatura { get; set; } = new();
+
         // 👇 Se vincula desde la querystring (?Unidad=2)
         [BindProperty(SupportsGet = true)]
         public int? Unidad { get; set; }
@@ -37,6 +40,14 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 .ThenBy(p => p.Asignatura)
                 .ThenBy(p => p.PreguntaId)
                 .ToListAsync();
+
+            // Agrupamos por asignatura y contamos unidades distintas
+            UnidadesPorAsignatura = ListaPreguntas
+                .GroupBy(p => (p.Asignatura ?? string.Empty).Trim())
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Select(p => p.Unidad).Distinct().Count()
+                );
         }
     }
 }
