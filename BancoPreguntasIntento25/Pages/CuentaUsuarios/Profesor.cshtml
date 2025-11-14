@@ -1,0 +1,25 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.CuentaUsuarios.ProfesorModel
+@{
+    ViewData["Title"] = "Profesores";
+    ViewData["HideNav"] = true;
+}
+
+<h1 class="page-title">Profesores</h1>
+
+<table class="table-bank">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prof in Model.ListaProfesores)
+        {
+            <tr>
+                <td>@prof.email</td>
+            </tr>
+        }
+    </tbody>
+</table>

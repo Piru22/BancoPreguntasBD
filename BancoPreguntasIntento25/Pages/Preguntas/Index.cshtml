@@ -17,6 +17,9 @@
             <!-- tus botones de flujo, respetando rutas -->
             <a asp-page="/Preguntas/Asignaturas" class="btn btn-ghost">📚 Ver asignaturas</a>
             <a asp-page="/Preguntas/VerRespuestas" class="btn btn-ghost">👁️ Ver preguntas</a>
+            <a asp-page="/Estadisticas/Estadistica" class="btn btn-ghost">📊 Ver estadísticas</a>
+            <a asp-page="/CuentaUsuarios/Profesor" class="btn btn-ghost">👨‍🏫 Ver profesores</a>
+
         </div>
 
         <div class="toolbar-right">
@@ -61,20 +64,19 @@
 
                     <!-- Celda reemplazada: Asignatura + indicador de estado -->
                     <td>
+                        <span class="chip">@item.Asignatura</span>
                         @{
                             var key = (item.Asignatura ?? string.Empty).Trim();
                             var unidades = Model.UnidadesPorAsignatura.TryGetValue(key, out var c) ? c : 0;
 
-                            // NUEVO MAPEO:
-                            var statusClass = unidades >= 5                ? "sq-green"
-                                             : (unidades == 3 || unidades == 4) ? "sq-yellow"
-                                             :                                   "sq-red";
+                            var statusClass = unidades >= 4 ? "sq-green"
+                            : unidades == 3 ? "sq-yellow"
+                            : "sq-red";
 
-                            var estadoTxt = unidades >= 5                ? "Completo"
-                                              : (unidades == 3 || unidades == 4) ? "Medio incompleto"
-                                              :                                   "Incompleto";
+                            var estadoTxt = unidades >= 4 ? "Completa"
+                            : unidades == 3 ? "Medio completa"
+                            : "Incompleta";
                         }
-                        <span class="chip">@item.Asignatura</span>
                         <span class="sq @statusClass" title="@($"{unidades} unidad(es) — {estadoTxt}")"></span>
                     </td>
 

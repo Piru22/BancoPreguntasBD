@@ -1,0 +1,50 @@
+﻿@page
+@model BancoPreguntasIntento25.Pages.Estadisticas.EstadisticaModel
+@{
+    ViewData["Title"] = "Panel de Estadísticas";
+    ViewData["HideNav"] = true;
+}
+
+<div class="container-wide">
+    <h1 class="page-title">Panel de Estadísticas</h1>
+
+    <div style="display:flex; gap:20px; justify-content:center; margin:30px 0;">
+        <div class="stat-card">
+            <h3>Total Asignaturas</h3>
+            <p>@Model.TotalAsignaturas</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Preguntas</h3>
+            <p>@Model.TotalPreguntas</p>
+        </div>
+        <div class="stat-card">
+            <h3>Total Unidades</h3>
+            <p>@Model.TotalUnidades</p>
+        </div>
+    </div>
+
+    <div style="max-width:400px; margin:40px auto;">
+        <canvas id="grafico"></canvas>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('grafico').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Incompletas', 'Medio completas', 'Completas'],
+                datasets: [{
+                    data: [@Model.Incompletas, @Model.MedioCompletas, @Model.Completas],
+                    backgroundColor: ['#e07a5f', '#f2cc8f', '#81b29a'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+    </script>
+}
