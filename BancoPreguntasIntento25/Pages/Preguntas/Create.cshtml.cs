@@ -35,7 +35,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return Page();
             }
 
-            _context.ListasPreguntas.Add(ListaPreguntas);
+            _context.ListaPreguntas.Add(ListaPreguntas);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

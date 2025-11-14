@@ -17,7 +17,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public void OnGet()
         {
-            Asignaturas = _context.ListasPreguntas
+            Asignaturas = _context.ListaPreguntas
                 .Select(p => p.Asignatura)
                 .Distinct()
                 .ToList();

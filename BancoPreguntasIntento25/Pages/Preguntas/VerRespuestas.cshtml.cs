@@ -19,7 +19,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public void OnGet()
         {
-            var q = _context.ListasPreguntas.AsQueryable();
+            var q = _context.ListaPreguntas.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(Asignatura))
                 q = q.Where(p => p.Asignatura == Asignatura);

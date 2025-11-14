@@ -27,7 +27,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
         public void OnGet()
         {
             // Paso 1: Asignaturas disponibles
-            Asignaturas = _context.ListasPreguntas
+            Asignaturas = _context.ListaPreguntas
                 .Select(p => p.Asignatura)
                 .Where(s => s != null && s != "")
                 .Distinct()
@@ -38,7 +38,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return; // aún no se eligió asignatura → mostramos solo paso 1
 
             // Paso 2: Unidades de la asignatura elegida
-            Unidades = _context.ListasPreguntas
+            Unidades = _context.ListaPreguntas
                 .Where(p => p.Asignatura == asig)
                 .Select(p => p.Unidad)
                 .Distinct()
@@ -49,7 +49,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return; // aún no se eligió unidad → mostramos paso 2
 
             // Paso 3: Subunidades de la asignatura + unidad elegidas
-            SubUnidades = _context.ListasPreguntas
+            SubUnidades = _context.ListaPreguntas
                 .Where(p => p.Asignatura == asig && p.Unidad == unidad.Value)
                 .Select(p => p.SubUnidad)
                 .Where(s => s != null && s != "")
@@ -61,7 +61,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
                 return; // aún no se eligió subunidad → mostramos paso 3
 
             // Paso 4: Preguntas de la combinación elegida
-            Preguntas = _context.ListasPreguntas
+            Preguntas = _context.ListaPreguntas
                 .Where(p => p.Asignatura == asig && p.Unidad == unidad.Value && p.SubUnidad == sub)
                 .OrderBy(p => p.PreguntaId)
                 .ToList();
