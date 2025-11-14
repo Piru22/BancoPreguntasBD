@@ -22,4 +22,3 @@ namespace BancoPreguntasIntento25.Pages.CuentaUsuarios
         }
     }
 }
-

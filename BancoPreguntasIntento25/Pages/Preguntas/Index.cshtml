@@ -9,6 +9,18 @@
 
     <h1 class="page-title">Banco de Preguntas</h1>
 
+    <div class="status-legend">
+        <span class="legend-item">
+            <span class="sq sq-green"></span> Completa (5 unidades)
+        </span>
+        <span class="legend-item">
+            <span class="sq sq-yellow"></span> Medio incompleta (3–4 unidades)
+        </span>
+        <span class="legend-item">
+            <span class="sq sq-red"></span> Incompleta (1–2 unidades)
+        </span>
+    </div>
+
     <div class="toolbar">
         <div class="toolbar-left">
             <!-- tu enlace existente, ahora con estilo btn -->
@@ -70,12 +82,12 @@
                             var unidades = Model.UnidadesPorAsignatura.TryGetValue(key, out var c) ? c : 0;
 
                             var statusClass = unidades >= 4 ? "sq-green"
-                            : unidades == 3 ? "sq-yellow"
-                            : "sq-red";
+                                             : unidades == 3 ? "sq-yellow"
+                                             : "sq-red";
 
                             var estadoTxt = unidades >= 4 ? "Completa"
-                            : unidades == 3 ? "Medio completa"
-                            : "Incompleta";
+                                          : unidades == 3 ? "Medio completa"
+                                          : "Incompleta";
                         }
                         <span class="sq @statusClass" title="@($"{unidades} unidad(es) — {estadoTxt}")"></span>
                     </td>

@@ -7,17 +7,26 @@
 
 <h1 class="page-title">Profesores</h1>
 
+<div style="margin-bottom:16px;">
+    <a asp-page="/Preguntas/Index" class="btn btn-ghost">
+        ⬅ Volver al Banco de Preguntas
+    </a>
+</div>
+
 <table class="table-bank">
     <thead>
         <tr>
             <th>Nombre</th>
-            <th>Correo</th>
+            <th>Apellido</th>
+            <th>Email</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var prof in Model.ListaProfesores)
         {
             <tr>
+                <td>@prof.nombre</td>
+                <td>@prof.apellido</td>
                 <td>@prof.email</td>
             </tr>
         }

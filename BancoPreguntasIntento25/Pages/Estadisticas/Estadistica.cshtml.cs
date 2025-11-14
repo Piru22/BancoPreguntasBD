@@ -22,7 +22,7 @@ namespace BancoPreguntasIntento25.Pages.Estadisticas
 
         public void OnGet()
         {
-            var preguntas = _context.ListasPreguntas.ToList();
+            var preguntas = _context.ListaPreguntas.ToList();
 
             TotalPreguntas = preguntas.Count;
             TotalAsignaturas = preguntas.Select(p => p.Asignatura).Distinct().Count();

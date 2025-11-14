@@ -16,7 +16,7 @@ namespace BancoPreguntasIntento25.Pages.Preguntas
 
         public void OnGet()
         {
-            SubUnidades = _context.ListasPreguntas
+            SubUnidades = _context.ListaPreguntas
                 .Where(p => p.Asignatura == Asignatura && p.Unidad == Unidad)
                 .Select(p => p.SubUnidad)
                 .Where(s => !string.IsNullOrWhiteSpace(s))
